@@ -30,14 +30,26 @@ Node * Find( Node*  Head  , int Val )
     }
     return nullptr;
 }
+/*
+step 1  :
+pass this find object  
+*/
+void InsertAfter(Node* & Head , int Val  )
+{
+    Node * New_Node = new Node();//this is Adderss in the  heap RAM 
+       New_Node->Val = Val;
+      New_Node->Next = Head->Next;
+      Head->Next = New_Node;    
+}
+
 void Print(Node *Head)
 {
     while (Head != nullptr)
     {
     cout<<"\n========================================================"<<endl;
        cout<<"Node:"<<Head->Val<<endl;
-    //    cout<<"The address of the indicator itself  "<<&Head->node<<endl;
-    //    cout<<"The address at which the cursor is pointing: "<<Head->node<<endl;
+       cout<<"The address of the indicator itself  "<<&Head->Next<<endl;
+       cout<<"The address at which the cursor is pointing: "<<Head->Next<<endl;
        Head = Head->Next;
        cout<<"\n========================================================"<<endl;
     }
@@ -46,23 +58,16 @@ void Print(Node *Head)
 
 int main()
 {
-  Node * Insert = nullptr;
-InsertAtBeginning1(Insert , 1);
-InsertAtBeginning1(Insert , 2);
-InsertAtBeginning1(Insert , 3);
-InsertAtBeginning1(Insert ,4);
-Print(Insert);
-
-Node * Finder = Find(Insert , 2);
-if (Finder!=nullptr)
-{
-    cout<<"Hello World : "<< Finder->Val<<endl;
-
-}
-else
-{
-    cout<<"NOt Found ): ";
-}
+  Node * head = nullptr;
+InsertAtBeginning1(head , 1);
+InsertAtBeginning1(head , 2);
+InsertAtBeginning1(head , 3);
+InsertAtBeginning1(head ,4);
+Node * Finder =nullptr; 
+Finder = Find(head , 2);
+  
+InsertAfter(Finder , 10);
+Print(head);
 
     system("pause>null");
     return 0;
